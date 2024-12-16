@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bfjmdl50qinfm"]
+
+[node name="Ideas" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 329.0
+offset_bottom = 230.0
+theme_override_font_sizes/font_size = 64
+text = "---PONG---
+2 Player Game
+ - Left / Right
+   - Inputs
+   - Score
+ - Serve starts in a random direction, 
+within the bouds of aiming at any corner, 
+but no farther towards the middel
+ - Serve speed is at half, once ball is hit
+by paddel speed sets to normal
+ - Paddels move slower than ball at normal
+speed. Somewhere from 80%-90%
+
+Does the ball bounce off the paddels?
+Based off of observation, the ball doesnt bounce
+normaly. I belevie that depending on where the 
+ball comes into contact with the paddel, a certain
+velocity vecotr gets added to the balls velocity. The
+highter on the paddel you hit the ball, the more 
+upwards the velocity added will be. The lower
+on paddel you hit the ball, the lower the balls 
+trajectory is set to. My plan is to linearly scale
+the added vectors direction going from traveling
+perpindicular to the paddel in the middle, all the 
+way to 45 degrees hitting on the edges"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 1713.0
+offset_right = 3602.0
+offset_bottom = 2253.0
+theme_override_font_sizes/font_size = 64
+text = "NOTE:
+Camera - to center the camera and have it expand from the
+center out instead of from the top left set Anchor Mode to
+Drag Center
+
+Label - labels have a transform element inside layout
+"

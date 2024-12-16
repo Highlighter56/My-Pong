@@ -1,0 +1,112 @@
+[gd_scene load_steps=8 format=3 uid="uid://i3a3idau2ow"]
+
+[ext_resource type="PackedScene" uid="uid://byh7oc2861ieu" path="res://wall.tscn" id="1_0a1op"]
+[ext_resource type="FontFile" uid="uid://gjyojkowenbp" path="res://assests/fonts/PixelOperator8-Bold.ttf" id="1_kjnvc"]
+[ext_resource type="Script" path="res://scripts/paddle_left.gd" id="3_gvw6v"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7t4vm"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_mhqed"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_lugvv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwx2l"]
+size = Vector2(30, 228)
+
+[node name="Game" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = -10
+rotation = 3.14159
+scale = Vector2(3421.96, -1998.21)
+texture = SubResource("CanvasTexture_7t4vm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1537, -898)
+anchor_mode = 0
+
+[node name="Label" type="Label" parent="."]
+offset_left = -323.0
+offset_top = -847.0
+offset_right = 325.0
+offset_bottom = -646.0
+theme_override_fonts/font = ExtResource("1_kjnvc")
+theme_override_font_sizes/font_size = 72
+text = "Score
+0     VS     0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Board" type="Node2D" parent="."]
+
+[node name="Top" parent="Board" instance=ExtResource("1_0a1op")]
+position = Vector2(0, -890)
+scale = Vector2(2, 1)
+
+[node name="Bottom" parent="Board" instance=ExtResource("1_0a1op")]
+position = Vector2(0, 890)
+rotation = 3.14159
+scale = Vector2(2, 1)
+
+[node name="Center Line" type="Node2D" parent="Board"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Board/Center Line"]
+position = Vector2(0, -600)
+scale = Vector2(28, 72.5)
+texture = SubResource("CanvasTexture_mhqed")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Board/Center Line"]
+position = Vector2(0, -450)
+scale = Vector2(28, 72.5)
+texture = SubResource("CanvasTexture_mhqed")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Board/Center Line"]
+position = Vector2(0, -300)
+scale = Vector2(28, 72.5)
+texture = SubResource("CanvasTexture_mhqed")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Board/Center Line"]
+position = Vector2(0, -150)
+scale = Vector2(28, 72.5)
+texture = SubResource("CanvasTexture_mhqed")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Board/Center Line"]
+scale = Vector2(28, 72.5)
+texture = SubResource("CanvasTexture_mhqed")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Board/Center Line"]
+position = Vector2(0, 150)
+scale = Vector2(28, 72.5)
+texture = SubResource("CanvasTexture_mhqed")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Board/Center Line"]
+position = Vector2(0, 300)
+scale = Vector2(28, 72.5)
+texture = SubResource("CanvasTexture_mhqed")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Board/Center Line"]
+position = Vector2(0, 450)
+scale = Vector2(28, 72.5)
+texture = SubResource("CanvasTexture_mhqed")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Board/Center Line"]
+position = Vector2(0, 600)
+scale = Vector2(28, 72.5)
+texture = SubResource("CanvasTexture_mhqed")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Board/Center Line"]
+position = Vector2(0, 750)
+scale = Vector2(28, 72.5)
+texture = SubResource("CanvasTexture_mhqed")
+
+[node name="Left Paddle" type="AnimatableBody2D" parent="."]
+position = Vector2(-1400, 0)
+script = ExtResource("3_gvw6v")
+
+[node name="Sprite2D" type="Sprite2D" parent="Left Paddle"]
+scale = Vector2(38, 234)
+texture = SubResource("CanvasTexture_lugvv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Paddle"]
+shape = SubResource("RectangleShape2D_pwx2l")

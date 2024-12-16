@@ -1,0 +1,511 @@
+[gd_scene load_steps=17 format=3 uid="uid://i3a3idau2ow"]
+
+[ext_resource type="PackedScene" uid="uid://byh7oc2861ieu" path="res://wall.tscn" id="1_0a1op"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_18gvx"]
+[ext_resource type="FontFile" uid="uid://gjyojkowenbp" path="res://assests/fonts/PixelOperator8-Bold.ttf" id="1_kjnvc"]
+[ext_resource type="Script" path="res://scripts/scoreboard.gd" id="2_ejkn7"]
+[ext_resource type="AudioStream" uid="uid://drq0664upyfqk" path="res://assests/sounds/power_up.wav" id="4_4b1vj"]
+[ext_resource type="Script" path="res://scripts/right_paddle.gd" id="4_beg4d"]
+[ext_resource type="Script" path="res://scripts/left_paddle2.gd" id="4_eqqhr"]
+[ext_resource type="Script" path="res://scripts/ball.gd" id="5_0pfh5"]
+[ext_resource type="AudioStream" uid="uid://s6xv1a8iofov" path="res://assests/sounds/bum-[AudioTrimmer.com].mp3" id="6_as1ol"]
+[ext_resource type="PackedScene" uid="uid://lpu4ueja168d" path="res://scense/goal.tscn" id="7_2qfxs"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_mhqed"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7t4vm"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_lugvv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwx2l"]
+size = Vector2(30, 228)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_amfih"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qb04m"]
+size = Vector2(38, 38)
+
+[node name="Game" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_18gvx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+
+[node name="UI" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -32)
+
+[node name="Title" type="Label" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -864.0
+offset_top = -585.0
+offset_right = 864.0
+offset_bottom = -278.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_kjnvc")
+theme_override_font_sizes/font_size = 96
+text = "P O N G"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PressSpace" type="Label" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -753.5
+offset_top = -189.0
+offset_right = 753.5
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_kjnvc")
+theme_override_font_sizes/font_size = 88
+text = "Press SPACE to Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Instructions" type="Node2D" parent="UI"]
+position = Vector2(0, 176)
+
+[node name="Controls" type="Label" parent="UI/Instructions"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -436.5
+offset_top = 55.0
+offset_right = 436.5
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_kjnvc")
+theme_override_font_sizes/font_size = 72
+text = "---Controls---"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Left_Controls" type="Label" parent="UI/Instructions"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -557.0
+offset_top = 193.0
+offset_right = 316.0
+offset_bottom = 265.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_kjnvc")
+theme_override_font_sizes/font_size = 72
+text = "Left: W and S
+"
+vertical_alignment = 1
+
+[node name="Right_Controls" type="Label" parent="UI/Instructions"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -557.0
+offset_top = 351.0
+offset_right = 559.0
+offset_bottom = 423.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_kjnvc")
+theme_override_font_sizes/font_size = 72
+text = "Right: Arrow Keys
+"
+vertical_alignment = 1
+
+[node name="leftControls" type="Label" parent="UI/Instructions"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1247.0
+offset_top = -890.0
+offset_right = -1018.0
+offset_bottom = -263.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_kjnvc")
+theme_override_font_sizes/font_size = 72
+text = "W:
+
+
+
+S:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="upArrow" type="Label" parent="UI/Instructions/leftControls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 78.5
+offset_top = -261.5
+offset_right = 240.5
+offset_bottom = -39.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_kjnvc")
+theme_override_font_sizes/font_size = 72
+text = "^
+/|\\
+|
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="downArrow" type="Label" parent="UI/Instructions/leftControls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 240.5
+offset_top = 269.5
+offset_right = 402.5
+offset_bottom = 491.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+theme_override_fonts/font = ExtResource("1_kjnvc")
+theme_override_font_sizes/font_size = 72
+text = "^
+/|\\
+|
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Win Screen" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="teamWins" type="Label" parent="Win Screen"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -578.0
+offset_top = -309.0
+offset_right = 578.0
+offset_bottom = -173.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_kjnvc")
+theme_override_font_sizes/font_size = 136
+text = "___ Wins!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayAgain" type="Node2D" parent="Win Screen"]
+position = Vector2(621, -92)
+
+[node name="question" type="Label" parent="Win Screen/PlayAgain"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -552.0
+offset_top = 127.0
+offset_right = 552.0
+offset_bottom = 295.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_kjnvc")
+theme_override_font_sizes/font_size = 88
+text = "- Play Again? -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="prompt" type="Label" parent="Win Screen/PlayAgain"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -753.5
+offset_top = 246.0
+offset_right = 753.5
+offset_bottom = 425.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_kjnvc")
+theme_override_font_sizes/font_size = 88
+text = "[SPACE]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayAgain2" type="Node2D" parent="Win Screen"]
+position = Vector2(-706, -88)
+
+[node name="question" type="Label" parent="Win Screen/PlayAgain2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -305.0
+offset_top = 176.0
+offset_right = 322.0
+offset_bottom = 264.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_kjnvc")
+theme_override_font_sizes/font_size = 88
+text = " - Quit? - "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="prompt" type="Label" parent="Win Screen/PlayAgain2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -753.5
+offset_top = 246.0
+offset_right = 753.5
+offset_bottom = 425.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_kjnvc")
+theme_override_font_sizes/font_size = 88
+text = "[ESC]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Scoreboard" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 28)
+script = ExtResource("2_ejkn7")
+
+[node name="Score" type="Label" parent="Scoreboard"]
+offset_left = -455.0
+offset_top = -900.0
+offset_right = 457.0
+offset_bottom = -699.0
+theme_override_fonts/font = ExtResource("1_kjnvc")
+theme_override_font_sizes/font_size = 88
+text = "Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VS" type="Label" parent="Scoreboard"]
+offset_left = -455.0
+offset_top = -780.0
+offset_right = 457.0
+offset_bottom = -579.0
+theme_override_fonts/font = ExtResource("1_kjnvc")
+theme_override_font_sizes/font_size = 88
+text = "VS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="leftScoreDisplay" type="Label" parent="Scoreboard"]
+offset_left = -363.0
+offset_top = -736.0
+offset_right = -147.0
+offset_bottom = -624.0
+theme_override_fonts/font = ExtResource("1_kjnvc")
+theme_override_font_sizes/font_size = 88
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="rightScoreDisplay" type="Label" parent="Scoreboard"]
+offset_left = 148.0
+offset_top = -737.0
+offset_right = 372.0
+offset_bottom = -623.0
+theme_override_fonts/font = ExtResource("1_kjnvc")
+theme_override_font_sizes/font_size = 88
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="goal!!" type="AudioStreamPlayer2D" parent="Scoreboard"]
+stream = ExtResource("4_4b1vj")
+bus = &"Goal"
+
+[node name="Board" type="Node2D" parent="."]
+
+[node name="Top" parent="Board" instance=ExtResource("1_0a1op")]
+position = Vector2(0, -890)
+scale = Vector2(2, 1)
+
+[node name="Bottom" parent="Board" instance=ExtResource("1_0a1op")]
+position = Vector2(0, 890)
+rotation = 3.14159
+scale = Vector2(2, 1)
+
+[node name="Center Line" type="Node2D" parent="Board"]
+unique_name_in_owner = true
+position = Vector2(0, 45)
+
+[node name="Sprite2D" type="Sprite2D" parent="Board/Center Line"]
+position = Vector2(0, -594)
+scale = Vector2(28, 72.5)
+texture = SubResource("CanvasTexture_mhqed")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Board/Center Line"]
+position = Vector2(0, -450)
+scale = Vector2(28, 72.5)
+texture = SubResource("CanvasTexture_mhqed")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Board/Center Line"]
+position = Vector2(0, -300)
+scale = Vector2(28, 72.5)
+texture = SubResource("CanvasTexture_mhqed")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Board/Center Line"]
+position = Vector2(0, -150)
+scale = Vector2(28, 72.5)
+texture = SubResource("CanvasTexture_mhqed")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Board/Center Line"]
+scale = Vector2(28, 72.5)
+texture = SubResource("CanvasTexture_mhqed")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Board/Center Line"]
+position = Vector2(0, 150)
+scale = Vector2(28, 72.5)
+texture = SubResource("CanvasTexture_mhqed")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Board/Center Line"]
+position = Vector2(0, 300)
+scale = Vector2(28, 72.5)
+texture = SubResource("CanvasTexture_mhqed")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Board/Center Line"]
+position = Vector2(0, 450)
+scale = Vector2(28, 72.5)
+texture = SubResource("CanvasTexture_mhqed")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Board/Center Line"]
+position = Vector2(0, 600)
+scale = Vector2(28, 72.5)
+texture = SubResource("CanvasTexture_mhqed")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Board/Center Line"]
+position = Vector2(0, 750)
+scale = Vector2(28, 72.5)
+texture = SubResource("CanvasTexture_mhqed")
+
+[node name="Background" type="Sprite2D" parent="Board"]
+modulate = Color(0, 0, 0, 1)
+z_index = -10
+rotation = 3.14159
+scale = Vector2(3421.96, -1998.21)
+texture = SubResource("CanvasTexture_7t4vm")
+
+[node name="Left Paddle" type="AnimatableBody2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-1400, 0)
+script = ExtResource("4_eqqhr")
+speed = 400
+
+[node name="Sprite2D" type="Sprite2D" parent="Left Paddle"]
+scale = Vector2(38, 234)
+texture = SubResource("CanvasTexture_lugvv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Paddle"]
+shape = SubResource("RectangleShape2D_pwx2l")
+
+[node name="TopRay" type="RayCast2D" parent="Left Paddle"]
+position = Vector2(-262, -91)
+target_position = Vector2(0, -54)
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="BottomRay" type="RayCast2D" parent="Left Paddle"]
+position = Vector2(-262, 91)
+rotation = 3.14159
+target_position = Vector2(0, -54)
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="Right Paddle" type="AnimatableBody2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1400, 0)
+rotation = 3.14159
+script = ExtResource("4_beg4d")
+speed = 400
+
+[node name="Sprite2D" type="Sprite2D" parent="Right Paddle"]
+scale = Vector2(38, 234)
+texture = SubResource("CanvasTexture_lugvv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Paddle"]
+shape = SubResource("RectangleShape2D_pwx2l")
+
+[node name="BottomRay" type="RayCast2D" parent="Right Paddle"]
+position = Vector2(-264, -91.0006)
+target_position = Vector2(0, -54)
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="TopRay" type="RayCast2D" parent="Right Paddle"]
+position = Vector2(-264, 90.9994)
+rotation = 3.14159
+target_position = Vector2(0, -54)
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="Ball" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_0pfh5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+scale = Vector2(42, 42)
+texture = SubResource("CanvasTexture_amfih")
+
+[node name="Area2D" type="Area2D" parent="Ball"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball/Area2D"]
+shape = SubResource("RectangleShape2D_qb04m")
+
+[node name="Bum" type="AudioStreamPlayer2D" parent="Ball"]
+stream = ExtResource("6_as1ol")
+bus = &"Bounce"
+
+[node name="Left Goal" parent="." instance=ExtResource("7_2qfxs")]
+position = Vector2(-1550, 0)
+
+[node name="Right Goal" parent="." instance=ExtResource("7_2qfxs")]
+position = Vector2(1550, 0)
+
+[connection signal="startGame" from="GameManager" to="Scoreboard" method="_on_game_manager_start_game"]
+[connection signal="startGame" from="GameManager" to="Ball" method="_on_game_manager_start_game"]
+[connection signal="area_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Left Goal" to="Scoreboard" method="_on_left_goal_area_entered"]
+[connection signal="area_entered" from="Right Goal" to="Scoreboard" method="_on_right_goal_area_entered"]
