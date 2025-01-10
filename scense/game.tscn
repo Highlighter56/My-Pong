@@ -32,7 +32,7 @@ unique_name_in_owner = true
 script = ExtResource("1_18gvx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
+zoom = Vector2(0.2, 0.215)
 
 [node name="UI" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -424,7 +424,7 @@ texture = SubResource("CanvasTexture_mhqed")
 modulate = Color(0, 0, 0, 1)
 z_index = -10
 rotation = 3.14159
-scale = Vector2(3421.96, -1998.21)
+scale = Vector2(5274.17, -3370.56)
 texture = SubResource("CanvasTexture_7t4vm")
 
 [node name="Left Paddle" type="AnimatableBody2D" parent="."]
